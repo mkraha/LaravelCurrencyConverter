@@ -65,8 +65,14 @@ class Update extends Command
         $defaultCurrency = $this->currency->config('default');
 
         if ($this->input->getOption('exchangeratesapi')) {
+            if (! $api = $this->currency->config('api_key')) {
+                $this->error('An API key is needed from ExchangeRatesApi.io to continue.');
+
+                return;
+            }
+            
             // Get rates from exchangeratesapi
-            return $this->updateFromExchangeRatesApi($defaultCurrency);
+            return $this->updateFromExchangeRatesApi($defaultCurrency, $api);
         }
 
         if ($this->input->getOption('google')) {
@@ -91,12 +97,12 @@ class Update extends Command
      *
      * @param $defaultCurrency
      */
-    private function updateFromExchangeRatesApi($defaultCurrency)
+    private function updateFromExchangeRatesApi($defaultCurrency, $api)
     {
         $this->info('Updating currency exchange rates from ExchangeRatesApi.io...');
 
         // Make request
-        $content = json_decode($this->request("https://api.exchangeratesapi.io/latest?base={$defaultCurrency}"));
+        $content = json_decode($this->request("http://api.exchangeratesapi.io/v1/latest?base={$defaultCurrency}&access_key={$api}"));
 
         // Error getting content?
         if (isset($content->error)) {
