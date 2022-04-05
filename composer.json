@@ -13,12 +13,12 @@
     "license": "BSD-2-Clause",
     "authors": [
         {
-            "name": "Daniel Stainback",
-            "email": "torann@gmail.com"
-        },
-        {
             "name": "Raha MK",
             "email": "krahamath@hotmail.com"
+        },
+        {
+            "name": "Daniel Stainback",
+            "email": "torann@gmail.com"
         }
     ],
     "require": {
