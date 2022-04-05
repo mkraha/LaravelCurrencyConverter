@@ -1,5 +1,5 @@
 {
-    "name": "torann/currency",
+    "name": "mkraha/laravel-currency-converter",
     "description": "This provides Laravel with currency functions such as currency formatting and conversion using up-to-date exchange rates.",
     "keywords": [
         "laravel",
@@ -15,6 +15,10 @@
         {
             "name": "Daniel Stainback",
             "email": "torann@gmail.com"
+        },
+        {
+            "name": "Raha MK",
+            "email": "krahamath@hotmail.com"
         }
     ],
     "require": {
@@ -37,16 +41,16 @@
             "src/helpers.php"
         ],
         "psr-4": {
-            "Torann\\Currency\\": "src/"
+            "Raha\\Currency\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Torann\\Currency\\CurrencyServiceProvider"
+                "Raha\\Currency\\CurrencyServiceProvider"
             ],
             "aliases": {
-                "Currency": "Torann\\Currency\\Facades\\Currency"
+                "Currency": "Raha\\Currency\\Facades\\Currency"
             }
         }
     }
