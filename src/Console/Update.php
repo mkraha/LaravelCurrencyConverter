@@ -96,7 +96,7 @@ class Update extends Command
      *
      * @param $defaultCurrency
      */
-    private function updateFromExchangeRateHost($defaultCurrency, $api)
+    private function updateFromExchangeRateHost($defaultCurrency)
     {
         $this->info('Updating currency exchange rates from ExchangeRateHost.io...');
 
