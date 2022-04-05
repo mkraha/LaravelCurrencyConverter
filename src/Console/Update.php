@@ -106,7 +106,7 @@ class Update extends Command
 
         // Error getting content?
         if (isset($content->error)) {
-            $this->error($content->description);
+            $this->error($content->message);
 
             return;
         }

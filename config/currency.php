@@ -67,13 +67,13 @@ return [
     'drivers' => [
 
         'database' => [
-            'class' => \Raha\Currency\Drivers\Database::class,
+            'class' => \Torann\Currency\Drivers\Database::class,
             'connection' => null,
             'table' => 'currencies',
         ],
 
         'filesystem' => [
-            'class' => \Raha\Currency\Drivers\Filesystem::class,
+            'class' => \Torann\Currency\Drivers\Filesystem::class,
             'disk' => null,
             'path' => 'currencies.json',
         ],
@@ -109,7 +109,7 @@ return [
     'formatters' => [
 
         'php_intl' => [
-            'class' => \Raha\Currency\Formatters\PHPIntl::class,
+            'class' => \Torann\Currency\Formatters\PHPIntl::class,
         ],
 
     ],
