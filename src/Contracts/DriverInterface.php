@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\Currency\Contracts;
+namespace Raha\Currency\Contracts;
 
 use DateTime;
 

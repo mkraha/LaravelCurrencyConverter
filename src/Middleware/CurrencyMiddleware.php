@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\Currency\Middleware;
+namespace Raha\Currency\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

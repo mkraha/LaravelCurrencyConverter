@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\Currency\Console;
+namespace Raha\Currency\Console;
 
 use Illuminate\Support\Arr;
 use Illuminate\Console\Command;
@@ -26,7 +26,7 @@ class Manage extends Command
     /**
      * Currency storage instance
      *
-     * @var \Torann\Currency\Contracts\DriverInterface
+     * @var \Raha\Currency\Contracts\DriverInterface
      */
     protected $storage;
 

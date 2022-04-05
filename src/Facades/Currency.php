@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\Currency\Facades;
+namespace Raha\Currency\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

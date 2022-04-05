@@ -1,9 +1,9 @@
 <?php
 
-namespace Torann\Currency\Formatters;
+namespace Raha\Currency\Formatters;
 
 use NumberFormatter;
-use Torann\Currency\Contracts\FormatterInterface;
+use Raha\Currency\Contracts\FormatterInterface;
 
 class PHPIntl implements FormatterInterface
 {

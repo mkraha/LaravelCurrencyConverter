@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\Currency;
+namespace Raha\Currency;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;

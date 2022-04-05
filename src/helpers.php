@@ -9,7 +9,7 @@ if (! function_exists('currency')) {
      * @param string $to
      * @param bool   $format
      *
-     * @return \Torann\Currency\Currency|string
+     * @return \Raha\Currency\Currency|string
      */
     function currency($amount = null, $from = null, $to = null, $format = true)
     {

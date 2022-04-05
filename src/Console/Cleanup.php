@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\Currency\Console;
+namespace Raha\Currency\Console;
 
 use Illuminate\Console\Command;
 
@@ -23,7 +23,7 @@ class Cleanup extends Command
     /**
      * Currency instance
      *
-     * @var \Torann\Currency\Currency
+     * @var \Raha\Currency\Currency
      */
     protected $currency;
 

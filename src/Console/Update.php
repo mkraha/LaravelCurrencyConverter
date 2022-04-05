@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\Currency\Console;
+namespace Raha\Currency\Console;
 
 use DateTime;
 use Illuminate\Support\Str;
@@ -28,7 +28,7 @@ class Update extends Command
     /**
      * Currency instance
      *
-     * @var \Torann\Currency\Currency
+     * @var \Raha\Currency\Currency
      */
     protected $currency;
 

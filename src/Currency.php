@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\Currency;
+namespace Raha\Currency;
 
 use Illuminate\Support\Arr;
 use Illuminate\Contracts\Cache\Factory as FactoryContract;
@@ -265,7 +265,7 @@ class Currency
     /**
      * Get storage driver.
      *
-     * @return \Torann\Currency\Contracts\DriverInterface
+     * @return \Raha\Currency\Contracts\DriverInterface
      */
     public function getDriver()
     {
@@ -286,7 +286,7 @@ class Currency
     /**
      * Get formatter driver.
      *
-     * @return \Torann\Currency\Contracts\FormatterInterface
+     * @return \Raha\Currency\Contracts\FormatterInterface
      */
     public function getFormatter()
     {
