@@ -5,6 +5,8 @@ namespace Raha\Currency\Console;
 use DateTime;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
 
 class Update extends Command
 {
@@ -14,7 +16,7 @@ class Update extends Command
      * @var string
      */
     protected $signature = 'currency:update
-                                {--e|exchangeratesapi : Get rates from ExchangeRatesApi.io}
+                                {--e|exchangeratehost : Get rates from ExchangeRate.host}
                                 {--o|openexchangerates : Get rates from OpenExchangeRates.org}
                                 {--g|google : Get rates from Google Finance}';
 
@@ -32,12 +34,15 @@ class Update extends Command
      */
     protected $currency;
 
+    protected $client;
+
     /**
      * Create a new command instance.
      */
-    public function __construct()
+    public function __construct(Client $client)
     {
         $this->currency = app('currency');
+        $this->client = $client;
 
         parent::__construct();
     }
@@ -64,15 +69,15 @@ class Update extends Command
         // Get Settings
         $defaultCurrency = $this->currency->config('default');
 
-        if ($this->input->getOption('exchangeratesapi')) {
+        if ($this->input->getOption('exchangeratehost')) {
             if (! $api = $this->currency->config('api_key')) {
-                $this->error('An API key is needed from ExchangeRatesApi.io to continue.');
+                $this->error('An API key is needed from ExchangeRateHost.io to continue.');
 
                 return;
             }
             
-            // Get rates from exchangeratesapi
-            return $this->updateFromExchangeRatesApi($defaultCurrency, $api);
+            // Get rates from exchangeratehost
+            return $this->updateFromExchangeRateHost($defaultCurrency, $api);
         }
 
         if ($this->input->getOption('google')) {
@@ -97,12 +102,17 @@ class Update extends Command
      *
      * @param $defaultCurrency
      */
-    private function updateFromExchangeRatesApi($defaultCurrency, $api)
+    private function updateFromExchangeRateHost($defaultCurrency, $api)
     {
-        $this->info('Updating currency exchange rates from ExchangeRatesApi.io...');
+        $this->info('Updating currency exchange rates from ExchangeRateHost.io...');
 
         // Make request
-        $content = json_decode($this->request("http://api.exchangeratesapi.io/v1/latest?base={$defaultCurrency}&access_key={$api}"));
+        $apiRequest = $this->client->request('GET', "https://api.exchangerate.host/latest", [
+            'query' => [
+                'base' => $defaultCurrency
+            ]
+        ]);
+        $content = json_decode($apiRequest->getBody(), true);
 
         // Error getting content?
         if (isset($content->error)) {
@@ -112,7 +122,8 @@ class Update extends Command
         }
 
         // Update each rate
-        foreach ($content->rates as $code => $value) {
+        foreach ($content['rates'] as $code => $value) {
+            //Log::info($code);
             $this->currency->getDriver()->update($code, [
                 'exchange_rate' => $value,
             ]);
