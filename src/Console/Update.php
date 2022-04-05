@@ -70,14 +70,8 @@ class Update extends Command
         $defaultCurrency = $this->currency->config('default');
 
         if ($this->input->getOption('exchangeratehost')) {
-            if (! $api = $this->currency->config('api_key')) {
-                $this->error('An API key is needed from ExchangeRateHost.io to continue.');
-
-                return;
-            }
-            
             // Get rates from exchangeratehost
-            return $this->updateFromExchangeRateHost($defaultCurrency, $api);
+            return $this->updateFromExchangeRateHost($defaultCurrency);
         }
 
         if ($this->input->getOption('google')) {
